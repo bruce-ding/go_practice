@@ -5,14 +5,14 @@ import (
 	"runtime"
 )
 
-// func main() {
-// 	var ok bool = true
-// 	var i int
-// 	for ok {
-// 		ok = test(i)
-// 		i++
-// 	}
-// }
+func main() {
+	var ok bool = true
+	var i int
+	for ok {
+		ok = test(i)
+		i++
+	}
+}
 
 func test(skip int) bool {
 	return call(skip)
