@@ -20,9 +20,20 @@
 # // linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 # // linkedList.get(1);            //返回3
 
-class MyLinkedList
-    def initialize()
 
+class ListNode
+    attr_accessor :val, :next
+    def initialize(val = 0, _next = nil)
+        @val = val
+        @next = _next
+    end
+end
+
+class MyLinkedList
+    attr_accessor :size, :dummy_head
+    def initialize()
+        @size = 0
+        @dummy_head = ListNode.new
     end
 
 =begin
@@ -30,7 +41,17 @@ class MyLinkedList
     :rtype: Integer
 =end
     def get(index)
+        if index < 0 || index > self.size - 1
+            return -1
+        end
 
+        cur_node = self.dummy_head.next
+        while index > 0
+            cur_node = cur_node.next
+            index -= 1
+        end
+
+        cur_node.val
     end
 
 =begin
@@ -38,7 +59,10 @@ class MyLinkedList
     :rtype: Void
 =end
     def add_at_head(val)
-
+        new_node = ListNode.new(val)
+        new_node.next = self.dummy_head.next
+        self.dummy_head.next = new_node
+        self.size += 1
     end
 
 =begin
@@ -46,7 +70,12 @@ class MyLinkedList
     :rtype: Void
 =end
     def add_at_tail(val)
-
+        cur_node = self.dummy_head
+        while cur_node.next != nil
+            cur_node = cur_node.next
+        end
+        cur_node.next = ListNode.new(val)
+        self.size += 1
     end
 
 =begin
@@ -55,7 +84,19 @@ class MyLinkedList
     :rtype: Void
 =end
     def add_at_index(index, val)
+        if index < 0 || index > self.size
+            return
+        end
 
+        cur_node = self.dummy_head
+        while index > 0
+            cur_node = cur_node.next
+            index -= 1
+        end
+        new_node = ListNode.new(val)
+        new_node.next = cur_node.next
+        cur_node.next = new_node
+        self.size += 1
     end
 
 =begin
@@ -63,7 +104,47 @@ class MyLinkedList
     :rtype: Void
 =end
     def delete_at_index(index)
+        if index < 0 || index > self.size - 1
+            return
+        end
 
+        cur_node = self.dummy_head
+        while index > 0
+            cur_node = cur_node.next
+            index -= 1
+        end
+        cur_node.next = cur_node.next.next
+        self.size -= 1
+    end
+
+    def print_list
+        cur_node = self.dummy_head
+        str = ""
+        while cur_node.next != nil
+            str += "#{cur_node.next.val} -> "
+            cur_node = cur_node.next
+        end
+        p str
     end
 
 end
+
+linked_list = MyLinkedList.new
+
+linked_list.add_at_head(1)      #链表变为1->
+linked_list.print_list()
+
+linked_list.add_at_tail(3)      #链表变为1-> 3
+linked_list.print_list()
+
+linked_list.add_at_index(1,2)   #链表变为1-> 2-> 3
+linked_list.print_list()
+
+val = linked_list.get(1)        #返回2
+p val
+
+linked_list.delete_at_index(1)  #现在链表是1-> 3
+linked_list.print_list()
+
+val = linked_list.get(1)        #返回3
+p val
