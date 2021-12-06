@@ -1,9 +1,33 @@
-package main
+package hash
 
 import (
-	"fmt"
 	"sort"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
+
+// 15. 三数之和
+// 力扣题目链接(https://leetcode-cn.com/problems/3sum/)
+// 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+
+// 注意：答案中不可以包含重复的三元组。
+
+// 示例 1：
+// 输入：nums = [-1,0,1,2,-1,-4]
+// 输出：[[-1,-1,2],[-1,0,1]]
+
+// 示例 2：
+// 输入：nums = []
+// 输出：[]
+
+// 示例 3：
+// 输入：nums = [0]
+// 输出：[]
+
+// 提示：
+// 0 <= nums.length <= 3000
+// -105 <= nums[i] <= 105
 
 /**
 排序 + 双指针
@@ -24,7 +48,7 @@ import (
 func threeSum(nums []int, target int) [][]int {
 	res := [][]int{}
 	n := len(nums)
-	// 对于数组长度 n，如果数组长度小于 3，直接返回
+	// 对于数组长度n，如果数组长度小于3，直接返回
 	if n < 3 {
 		return res
 	}
@@ -55,9 +79,7 @@ func threeSum(nums []int, target int) [][]int {
 				for left < right && nums[right] == nums[right-1] {
 					right--
 				}
-				// -1, 0, 1, 2, -1, -4   target = 0
-				// -4, -1, -1, 0, 1, 2   target = 0
-				// nums[0] + nums[1] + nums[4]
+
 				left++
 				right--
 			} else if sum > target {
@@ -70,9 +92,14 @@ func threeSum(nums []int, target int) [][]int {
 	return res
 }
 
-func main() {
+func TestThreeSum(t *testing.T) {
+	// 输入：nums = [-1,0,1,2,-1,-4]
+	// 输出：[[-1,-1,2],[-1,0,1]]
 	nums := []int{-1, 0, 1, 2, -1, -4}
 	target := 0
 	res := threeSum(nums, target)
-	fmt.Println(res)
+	expected := [][]int{
+		{-1, -1, 2}, {-1, 0, 1},
+	}
+	assert.Equal(t, res, expected)
 }
