@@ -49,7 +49,6 @@ def print_list(head)
     p str
 end
 
-
 def arr_to_list(arr)
     if arr.length == 0
         return nil

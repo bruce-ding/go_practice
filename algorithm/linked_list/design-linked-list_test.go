@@ -1,6 +1,9 @@
-package main
+package linked_list
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 // https://leetcode-cn.com/problems/design-linked-list/
 // 707. 设计链表
@@ -23,11 +26,6 @@ import "fmt"
 // linkedList.get(1);            //返回2
 // linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 // linkedList.get(1);            //返回3
-
-type ListNode struct {
-	Val int
-	Next *ListNode
-}
 
 type MyLinkedList struct {
 	dummyHead *ListNode
@@ -110,7 +108,7 @@ func (this *MyLinkedList) PrintList() {
 	fmt.Println()
 }
 
-func main() {
+func TestMyLinkedListTest(t *testing.T) {
 	//  * Your MyLinkedList object will be instantiated and called as such:
 	linkedList := Constructor()
 

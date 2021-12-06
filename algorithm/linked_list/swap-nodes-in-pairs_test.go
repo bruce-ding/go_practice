@@ -1,4 +1,9 @@
-package main
+package linked_list
+
+import (
+	"reflect"
+	"testing"
+)
 
 // 24. 两两交换链表中的节点
 // 力扣题目链接(https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
@@ -6,15 +11,6 @@ package main
 // 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 
 // 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-
-import (
-	"fmt"
-)
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 // origin: 1 -> 2 -> 3 -> 4
 // step0: cur = dummy
@@ -40,37 +36,25 @@ func swapPairs(head *ListNode) *ListNode {
 	return dummyHead.Next
 }
 
-func printList(head *ListNode) {
-	cur := head
-	for cur != nil {
-		fmt.Printf("%d -> ", cur.Val)
-		cur = cur.Next
-	}
-	fmt.Println()
-}
+// 24. 两两交换链表中的节点
+// 力扣题目链接(https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
 
-func arrToList(arr []int) *ListNode {
-	if len(arr) == 0 {
-		return nil
-	}
+// 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 
-	dummyHead := &ListNode{}
-	curNode := dummyHead
+// 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
-	for i := 0; i < len(arr); i++ {
-		newNode := &ListNode{Val: arr[i]}
-		curNode.Next = newNode
-		curNode = newNode
-	}
-
-	return dummyHead.Next
-}
-
-func main() {
+func TestSwapPairs(t *testing.T) {
 	arr := []int{1, 2, 6, 3, 4, 5, 6}
 	head := arrToList(arr)
 	printList(head)
 
 	newHead := swapPairs(head)
 	printList(newHead)
+
+	newArr := listToArr(newHead)
+
+	expected := []int{2,1,3,6,5,4,6}
+	if !reflect.DeepEqual(expected, newArr) {
+		t.Errorf("expected %v, but got %v", expected, newArr)
+	}
 }

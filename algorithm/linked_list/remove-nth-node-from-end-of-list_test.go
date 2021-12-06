@@ -1,4 +1,8 @@
-package main
+package linked_list
+
+import (
+	"testing"
+)
 
 // 19.删除链表的倒数第N个节点
 // 力扣题目链接(https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
@@ -16,12 +20,6 @@ package main
 // 示例 3：
 // 输入：head = [1,2], n = 1 输出：[1]
 
-import "fmt"
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 // 双指针法
 // dummy -> 1 -> 2 -> 3 -> 4 -> 5
@@ -54,33 +52,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	return dummy.Next
 }
 
-func printList(head *ListNode) {
-	cur := head
-	for cur != nil {
-		fmt.Printf("%d -> ", cur.Val)
-		cur = cur.Next
-	}
-	fmt.Println()
-}
-
-func arrToList(arr []int) *ListNode {
-	if len(arr) == 0 {
-		return nil
-	}
-
-	dummyHead := &ListNode{}
-	curNode := dummyHead
-
-	for i := 0; i < len(arr); i++ {
-		newNode := &ListNode{Val: arr[i]}
-		curNode.Next = newNode
-		curNode = newNode
-	}
-
-	return dummyHead.Next
-}
-
-func main() {
+func TestRemoveNthFromEnd(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 5}
 	head := arrToList(arr)
 	newHead := removeNthFromEnd(head, 2)

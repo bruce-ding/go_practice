@@ -1,4 +1,4 @@
-package main
+package linked_list
 
 //203.移除链表元素
 //力扣题目链接(https://leetcode-cn.com/problems/remove-linked-list-elements/)
@@ -17,12 +17,9 @@ package main
 //输入：head = [7,7,7,7], val = 7
 //输出：[]
 
-import "fmt"
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import (
+	"testing"
+)
 
 func removeElements(head *ListNode, target int) *ListNode {
 	dummyHead := &ListNode{Next: head}
@@ -38,33 +35,7 @@ func removeElements(head *ListNode, target int) *ListNode {
 	return dummyHead.Next
 }
 
-func printList(head *ListNode) {
-	cur := head
-	for cur != nil {
-		fmt.Printf("%d -> ", cur.Val)
-		cur = cur.Next
-	}
-	fmt.Println()
-}
-
-func arrToList(arr []int) *ListNode {
-	if len(arr) == 0 {
-		return nil
-	}
-
-	dummyHead := &ListNode{}
-	curNode := dummyHead
-
-	for i := 0; i < len(arr); i++ {
-		newNode := &ListNode{Val: arr[i]}
-		curNode.Next = newNode
-		curNode = newNode
-	}
-
-	return dummyHead.Next
-}
-
-func main() {
+func TestRemoveElements(t *testing.T) {
 	arr := []int{1, 2, 6, 3, 4, 5, 6}
 	head := arrToList(arr)
 	printList(head)

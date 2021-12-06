@@ -1,4 +1,4 @@
-package main
+package array
 
 //704. 二分查找
 //力扣题目链接(https://leetcode-cn.com/problems/binary-search/)
@@ -21,13 +21,16 @@ package main
 //n 将在 [1, 10000]之间。
 //nums 的每个元素都将在 [-9999, 9999]之间。
 
-import "fmt"
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
 
 func binarySearch(nums []int, target int) int {
 	left := 0
 	right := len(nums) - 1
 	for left <= right {
-		middle := left + (right - left) / 2
+		middle := left + (right-left)/2
 		if nums[middle] > target {
 			right = middle - 1
 		} else if nums[middle] < target {
@@ -40,8 +43,8 @@ func binarySearch(nums []int, target int) int {
 	return -1
 }
 
-func main() {
-	nums := []int{1,2,3,4,5,6,7,8,9}
-	res := binarySearch(nums, 9)
-	fmt.Println(res)
+func TestBinarySearch(t *testing.T) {
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	res := binarySearch(nums, 8)
+	assert.Equal(t, res, 7, "res should be 7")
 }

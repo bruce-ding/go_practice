@@ -1,4 +1,4 @@
-package main
+package array
 
 // 209.长度最小的子数组
 // 力扣题目链接(https://leetcode-cn.com/problems/minimum-size-subarray-sum/)
@@ -10,7 +10,8 @@ package main
 // 输入：s = 7, nums = [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
 
 import (
-	"fmt"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func minSubArrayLen(target int, nums []int) int {
@@ -38,9 +39,10 @@ func minSubArrayLen(target int, nums []int) int {
 	}
 }
 
-func main() {
+// 输入：s = 7, nums = [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+func TestMinSubArrayLen(t *testing.T) {
 	target := 7
 	nums := []int{2, 3, 1, 2, 4, 3}
 	res := minSubArrayLen(target, nums)
-	fmt.Println(res)
+	assert.Equal(t, res, 2, "res should be 2")
 }

@@ -1,6 +1,9 @@
-package main
+package array
 
-import "fmt"
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
 
 //27. 移除元素
 //力扣题目链接(https://leetcode-cn.com/problems/remove-element/)
@@ -29,8 +32,9 @@ func removeElement(nums []int, target int) int {
 }
 
 // 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。
-func main() {
+func TestRemoveElement(t *testing.T) {
 	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
 	length := removeElement(nums, 2)
-	fmt.Println(length)
+	assert.Equal(t, length, 5, "length should be 5")
+	assert.Equal(t, nums[0:5], []int{0, 1, 3, 0, 4}, "first five elements of nums should be 0, 1, 3, 0, 4")
 }

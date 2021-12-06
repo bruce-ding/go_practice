@@ -1,4 +1,4 @@
-package main
+package linked_list
 
 // 206.反转链表
 // 力扣题目链接(https://leetcode-cn.com/problems/reverse-linked-list/)
@@ -8,13 +8,8 @@ package main
 // 示例: 输入: 1->2->3->4->5->NULL 输出: 5->4->3->2->1->NULL
 
 import (
-	"fmt"
+	"testing"
 )
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 // 双指针法
 // pre -> 1 -> 2 -> 3 -> 4 -> 5
@@ -45,33 +40,7 @@ func reverse(pre, cur *ListNode) *ListNode {
 	return reverse(cur, tmp) // 通过递归实现双指针法中的更新操作
 }
 
-func printList(head *ListNode) {
-	cur := head
-	for cur != nil {
-		fmt.Printf("%d -> ", cur.Val)
-		cur = cur.Next
-	}
-	fmt.Println()
-}
-
-func arrToList(arr []int) *ListNode {
-	if len(arr) == 0 {
-		return nil
-	}
-
-	dummyHead := &ListNode{}
-	curNode := dummyHead
-
-	for i := 0; i < len(arr); i++ {
-		newNode := &ListNode{Val: arr[i]}
-		curNode.Next = newNode
-		curNode = newNode
-	}
-
-	return dummyHead.Next
-}
-
-func main() {
+func TestReverseList(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 5}
 	head := arrToList(arr)
 	printList(head)
