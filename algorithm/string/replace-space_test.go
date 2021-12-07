@@ -1,6 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
+/**
+题目：剑指Offer 05.替换空格
+力扣题目链接(https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)
+
+请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
+
+示例 1
+输入：s = "We are happy."
+输出："We%20are%20happy."
+**/
 
 // 遍历添加
 func replaceSpace1(s string) string {
@@ -16,35 +31,6 @@ func replaceSpace1(s string) string {
 	return string(result)
 }
 
-// func replaceSpace2(s string) string {
-// 	bytes := []byte(s)
-// 	l := len(bytes)
-// 	count := 0
-// 	for i := 0; i < l; i++ {
-// 		if bytes[i] == ' ' {
-// 			count++
-// 		}
-// 	}
-// 	fmt.Println("count", count)
-// 	result := make([]byte, l+count*2)
-// 	fmt.Printf("cap: %v len: %v\n", cap(result), len(result))
-// 	j := 0
-// 	for i := 0; i < l; i++ {
-// 		if bytes[i] == ' ' {
-// 			result[j] = '%'
-// 			result[j+1] = '2'
-// 			result[j+2] = '0'
-// 			j += 2
-// 		} else {
-// 			result[j] = bytes[j]
-// 			j++
-// 		}
-// 	}
-// 	fmt.Println("result", result)
-
-// 	return string(result)
-// }
-
 // 原地修改
 func replaceSpace(s string) string {
 	b := []byte(s)
@@ -56,6 +42,7 @@ func replaceSpace(s string) string {
 			spaceCount++
 		}
 	}
+
 	// 扩展原有切片
 	resizeCount := spaceCount * 2
 	tmp := make([]byte, resizeCount)
@@ -80,8 +67,12 @@ func replaceSpace(s string) string {
 	return string(b)
 }
 
-func main() {
+func TestReplaceSpace(t *testing.T) {
+	// 输入：s = "We are happy."
+	// 输出："We%20are%20happy."
 	str := replaceSpace("We are happy.")
-	fmt.Println(str)
-	fmt.Println(len([]byte(" ")))
+	assert.Equal(t, "We%20are%20happy.", str)
+
+	str = replaceSpace1("We are happy.")
+	assert.Equal(t, "We%20are%20happy.", str)
 }
