@@ -1,5 +1,11 @@
 package array
 
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
 //59.螺旋矩阵II
 //力扣题目链接(https://leetcode-cn.com/problems/spiral-matrix-ii/)
 //
@@ -8,8 +14,6 @@ package array
 //示例:
 //
 //输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]
-
-import "fmt"
 
 func spiralMatrix(n int) [][]int {
 	matrix := make([][]int, n)
@@ -51,7 +55,12 @@ func spiralMatrix(n int) [][]int {
 // 1  2  3
 // 8  9  4
 // 7  6  5
-func main() {
+func TestSpiralMatrixII(t *testing.T) {
+	//输入: 3
+	//输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]
 	matrix := spiralMatrix(3)
-	fmt.Println(matrix)
+	expected := [][]int{
+		{1, 2, 3}, {8, 9, 4}, {7, 6, 5},
+	}
+	assert.Equal(t, expected, matrix)
 }

@@ -10,8 +10,9 @@ package array
 // 输入：s = 7, nums = [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func minSubArrayLen(target int, nums []int) int {
@@ -44,5 +45,5 @@ func TestMinSubArrayLen(t *testing.T) {
 	target := 7
 	nums := []int{2, 3, 1, 2, 4, 3}
 	res := minSubArrayLen(target, nums)
-	assert.Equal(t, res, 2, "res should be 2")
+	assert.Equal(t, 2, res, "res should be 2")
 }

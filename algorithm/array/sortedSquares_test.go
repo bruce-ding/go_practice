@@ -10,8 +10,9 @@ package array
 // 示例 2： 输入：nums = [-7,-3,2,3,11] 输出：[4,9,9,49,121]
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func sortedSquares(nums []int) []int {
@@ -36,5 +37,5 @@ func TestSortedSquares(t *testing.T) {
 	// nums = [-4,-1,0,3,10] 输出：[0,1,9,16,100] 解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]
 	nums := []int{-4, -1, 0, 3, 10}
 	res := sortedSquares(nums)
-	assert.Equal(t, res, []int{0, 1, 9, 16, 100})
+	assert.Equal(t, []int{0, 1, 9, 16, 100}, res)
 }

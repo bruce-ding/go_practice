@@ -1,8 +1,9 @@
 package array
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 //27. 移除元素
@@ -36,5 +37,5 @@ func TestRemoveElement(t *testing.T) {
 	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
 	length := removeElement(nums, 2)
 	assert.Equal(t, length, 5, "length should be 5")
-	assert.Equal(t, nums[0:5], []int{0, 1, 3, 0, 4}, "first five elements of nums should be 0, 1, 3, 0, 4")
+	assert.Equal(t, []int{0, 1, 3, 0, 4}, nums[0:5], "first five elements of nums should be 0, 1, 3, 0, 4")
 }

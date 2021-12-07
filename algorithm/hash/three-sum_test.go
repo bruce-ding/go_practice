@@ -101,5 +101,5 @@ func TestThreeSum(t *testing.T) {
 	expected := [][]int{
 		{-1, -1, 2}, {-1, 0, 1},
 	}
-	assert.Equal(t, res, expected)
+	assert.Equal(t, expected, res)
 }
