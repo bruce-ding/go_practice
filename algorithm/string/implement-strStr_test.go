@@ -1,8 +1,11 @@
-package main
+package string
 
 import (
 	"fmt"
 	"strings"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // 方法一:前缀表使用减1实现
@@ -25,13 +28,16 @@ func getNext(next []int, s string) {
 		next[i] = j // next[i]是i（包括i）之前的最长相等前后缀长度
 	}
 }
+
 func strStr(haystack string, needle string) int {
 	if len(needle) == 0 {
 		return 0
 	}
+
 	next := make([]int, len(needle))
 	getNext(next, needle)
 	fmt.Println(next)
+
 	j := -1 // 模式串的起始位置 next为-1 因此也为-1
 	for i := 0; i < len(haystack); i++ {
 		for j >= 0 && haystack[i] != needle[j+1] {
@@ -47,13 +53,13 @@ func strStr(haystack string, needle string) int {
 	return -1
 }
 
-func main() {
+func TestStrStr(t *testing.T) {
 	haystack := "hello"
 	needle := "ll"
 
 	idx := strStr(haystack, needle)
-	fmt.Println(idx)
+	assert.Equal(t, 2, idx)
 
 	idx = strings.Index(haystack, needle)
-	fmt.Println(idx)
+	assert.Equal(t, 2, idx)
 }

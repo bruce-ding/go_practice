@@ -5,14 +5,7 @@
 
 # 示例: 输入: 1->2->3->4->5->NULL 输出: 5->4->3->2->1->NULL
 
-# Definition for singly-linked list.
-class ListNode
-    attr_accessor :val, :next
-    def initialize(val = 0, _next = nil)
-        @val = val
-        @next = _next
-    end
-end
+require_relative './list_node.rb'
 
 # 双指针法
 def reverse_list(head)
@@ -26,48 +19,20 @@ def reverse_list(head)
         cur = tmp
     end
 
-    pre_node
+    pre
 end
 
 # 递归法
-def reverse_list(head)
-  reverse(nil, head)
+def reverse_list_recursively(head)
+    do_reverse(nil, head)
 end
 
-def reverse(pre, cur)
+def do_reverse(pre, cur)
   return pre if cur.nil?
 
   tmp = cur.next
   cur.next = pre
   reverse(cur, tmp)	# 通过递归实现双指针法中的更新操作
-end
-
-def print_list(head)
-	cur = head
-    str = ''
-	while cur != nil
-		str += "#{cur.val} -> "
-		cur = cur.next
-    end
-    p str
-end
-
-
-def arr_to_list(arr)
-    if arr.length == 0
-        return nil
-    end
-
-    dummy_head = ListNode.new
-    cur_node = dummy_head
-
-    arr.each do |val|
-        new_node = ListNode.new(val)
-        cur_node.next = new_node
-        cur_node = new_node
-    end
-
-    dummy_head.next
 end
 
 # 示例: 输入: 1->2->3->4->5->NULL 输出: 5->4->3->2->1->NULL

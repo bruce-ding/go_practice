@@ -28,14 +28,7 @@
 # //
 # //进阶：你是否可以使用 O(1) 空间解决此题?
 
-# Definition for singly-linked list.
-class ListNode
-    attr_accessor :val, :next
-    def initialize(val = 0, _next = nil)
-        @val = val
-        @next = _next
-    end
-end
+require_relative './list_node.rb'
 
 # 使用hash
 def detect_cycle(head)

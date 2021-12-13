@@ -25,7 +25,7 @@ def two_sum(nums, target)
 			return [j, i]
 		else
 			m[target-n] = i
-        end
+		end
 	end
 
 	nil

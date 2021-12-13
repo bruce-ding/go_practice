@@ -20,14 +20,7 @@
 # // linkedList.deleteAtIndex(1);  //现在链表是1-> 3
 # // linkedList.get(1);            //返回3
 
-
-class ListNode
-    attr_accessor :val, :next
-    def initialize(val = 0, _next = nil)
-        @val = val
-        @next = _next
-    end
-end
+require_relative './list_node.rb'
 
 class MyLinkedList
     attr_accessor :size, :dummy_head

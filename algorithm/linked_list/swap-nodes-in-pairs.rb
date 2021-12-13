@@ -5,13 +5,7 @@
 
 # // 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
-class ListNode
-    attr_accessor :val, :next
-    def initialize(val = 0, _next = nil)
-        @val = val
-        @next = _next
-    end
-end
+require_relative './list_node.rb'
 
 # origin: 1 -> 2 -> 3 -> 4
 # step0: cur = dummy -> 1 -> 2 -> 3 -> 4
@@ -37,33 +31,6 @@ def swap_pairs(head)
 	end
 
 	dummy.next
-end
-
-def print_list(head)
-	cur = head
-    str = ''
-	while cur != nil
-		str += "#{cur.val} -> "
-		cur = cur.next
-    end
-    p str
-end
-
-def arr_to_list(arr)
-    if arr.length == 0
-        return nil
-    end
-
-    dummy_head = ListNode.new
-    cur_node = dummy_head
-
-    arr.each do |val|
-        new_node = ListNode.new(val)
-        cur_node.next = new_node
-        cur_node = new_node
-    end
-
-    dummy_head.next
 end
 
 arr = [1, 2, 6, 3, 4, 5, 6]

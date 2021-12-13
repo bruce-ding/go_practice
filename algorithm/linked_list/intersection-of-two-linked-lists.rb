@@ -38,14 +38,7 @@
 # //如果 listA 和 listB 没有交点，intersectVal 为 0
 # //如果 listA 和 listB 有交点，intersectVal == listA[skipA + 1] == listB[skipB + 1
 
-# Definition for singly-linked list.
-class ListNode
-    attr_accessor :val, :next
-    def initialize(val = 0, _next = nil)
-        @val = val
-        @next = _next
-    end
-end
+require_relative './list_node.rb'
 
 def get_intersection_node(headA, headB)
 	curA = headA

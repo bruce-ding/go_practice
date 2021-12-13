@@ -53,31 +53,19 @@ def replace_space(s)
 	chars.join('')
 end
 
-# 输入：s = "We are happy."
-# 输出："We%20are%20happy."
-str = replace_space("We are happy.")
-# p str # should be "We%20are%20happy."
-
-str = replace_space1("We are happy.")
-# p str # should be "We%20are%20happy."
-
 require "minitest/autorun"
 
-describe "replace_space" do
-#   before do
-#     @meme = Meme.new
-#   end
+describe "replace space" do
+	it "must" do
+		# 输入：s = "We are happy."
+		# 输出："We%20are%20happy."
+		input = "We are happy."
+		output = "We%20are%20happy."
+		
+		str = replace_space(input)
+		assert_equal str, output
 
-  describe "replace space of \We are happy.\" do
-    it "must return " do
-		str = replace_space("We are happy.")
-		_(str).must_equal "We%20are%20happy."
-    end
-  end
-
-#   describe "when asked about blending possibilities" do
-#     it "won't say no" do
-#       _(@meme.will_it_blend?).wont_match /^no/i
-#     end
-#   end
+		str = replace_space1(input)
+		assert_equal str, output
+	end
 end

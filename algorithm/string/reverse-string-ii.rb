@@ -53,10 +53,16 @@ def reverse(s)
 	s
 end
 
-# 输入：s = "abcdefg", k = 2
-# 输出："bacdfeg"
-str = reverse_str("abcdefg", 2)
-p str # should be "bacdfeg"
+require "minitest/autorun"
 
-str = reverse_str("abcdefghijklm", 3)
-p str # should be "cbadefihgjklm"
+describe "reverse_str" do
+	it "must" do
+		# 输入：s = "abcdefg", k = 2
+		# 输出："bacdfeg"
+		str = reverse_str("abcdefg", 2)
+		assert_equal str, "bacdfeg"
+
+		str = reverse_str("abcdefghijklm", 3)
+		assert_equal str, "cbadefihgjklm"
+	end
+end
