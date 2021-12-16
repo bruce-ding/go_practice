@@ -34,12 +34,6 @@ def reverse_string1(s)
 	end
 end
 
-# s = "hello world"
-# reverse_string(s)
-# p s # should be "dlrow olleh"
-# reverse_string1(s)
-# p s # should be "hello world"
-
 require "minitest/autorun"
 
 describe "reverse_string" do

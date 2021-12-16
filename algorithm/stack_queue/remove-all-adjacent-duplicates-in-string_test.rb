@@ -24,7 +24,7 @@ def remove_duplicates(s)
 	s.each_char do |c|
 		# 栈不空 且 与栈顶元素不等
 		if stack.length > 0 && stack.last == c
-			# 弹出栈顶元素 并 忽略当前元素(s[i])
+			# 弹出栈顶元素 并 忽略当前元素(c)
 			stack.pop
 		else
 			# 入栈
