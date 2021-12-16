@@ -10,12 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 func preOrderTraversal(root *TreeNode) {
 	if root == nil {
 		return
@@ -64,6 +58,7 @@ func layerOrderTraversal(root *TreeNode) [][]int {
 			}
 			tmpArr = append(tmpArr, node.Val) //将值加入本层切片中
 		}
+		fmt.Println(tmpArr)
 		res = append(res, tmpArr) //放入结果集
 		tmpArr = []int{}          //清空层的数据
 	}
